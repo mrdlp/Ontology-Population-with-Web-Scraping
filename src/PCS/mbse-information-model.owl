@@ -1,0 +1,362 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://david.org/informationmodel.owl"
+         xmlns="http://david.org/informationmodel.owl#">
+
+<owl:Ontology rdf:about="http://david.org/informationmodel.owl"/>
+
+<owl:ObjectProperty rdf:about="#authored_by">
+  <rdfs:domain rdf:resource="#information_concretization"/>
+  <rdfs:range rdf:resource="#actor"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">every information-concretization has some author, some information-concretizations, e.g., books, may have several authors</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#based_on">
+  <rdfs:domain rdf:resource="#doc_format"/>
+  <rdfs:range rdf:resource="#doc_format"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#can_perform">
+  <rdfs:domain rdf:resource="#system"/>
+  <rdfs:range rdf:resource="#function"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#captures">
+  <rdfs:domain rdf:resource="#information_carrier"/>
+  <rdfs:range rdf:resource="#information_concretization"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">an information carrier may capture several information concretizations</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#concretizes">
+  <rdfs:domain rdf:resource="#information_concretization"/>
+  <rdfs:range rdf:resource="#information"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">an information concretizations concretizes information</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#defines">
+  <rdfs:domain rdf:resource="#project"/>
+  <rdfs:range rdf:resource="#requirement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#describes"/>
+
+<owl:ObjectProperty rdf:about="#expressed_in">
+  <rdfs:domain rdf:resource="#information_concretization"/>
+  <rdfs:range rdf:resource="#language"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">an information concretization is expressed in at least one language, e.g., UML and English might be used together</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has"/>
+
+<owl:ObjectProperty rdf:about="#has_license_for">
+  <rdfs:domain rdf:resource="#organization"/>
+  <rdfs:range rdf:resource="#tool"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_right"/>
+
+<owl:ObjectProperty rdf:about="#part">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#performs">
+  <rdfs:domain rdf:resource="#system"/>
+  <rdfs:range rdf:resource="#function"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#possesses">
+  <rdfs:domain rdf:resource="#person"/>
+  <rdfs:range rdf:resource="#information"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#predecessor">
+  <rdfs:domain rdf:resource="#information_concretization"/>
+  <rdfs:range rdf:resource="#information_concretization"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">predecessor relation between information-concretizations for versioning support</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#provides">
+  <rdfs:domain rdf:resource="#actor"/>
+  <rdfs:range rdf:resource="#information"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#publishes">
+  <rdfs:domain rdf:resource="#actor"/>
+  <rdfs:range rdf:resource="#information_concretization"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#requires">
+  <rdfs:domain rdf:resource="#actor"/>
+  <rdfs:range rdf:resource="#information"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#restricts">
+  <rdfs:domain rdf:resource="#non_functional_requirement"/>
+  <rdfs:range rdf:resource="#system"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#satisfies">
+  <rdfs:domain rdf:resource="#system"/>
+  <rdfs:range rdf:resource="#requirement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#specifies">
+  <rdfs:domain rdf:resource="#functional_requirement"/>
+  <rdfs:range rdf:resource="#function"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#stored_as">
+  <rdfs:domain rdf:resource="#information_concretization"/>
+  <rdfs:range rdf:resource="#doc_format"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#subscribes">
+  <rdfs:domain rdf:resource="#actor"/>
+  <rdfs:range rdf:resource="#information_concretization"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#supports">
+  <rdfs:domain rdf:resource="#tool"/>
+  <rdfs:range rdf:resource="#doc_format"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_read_right">
+  <rdfs:subPropertyOf rdf:resource="#has_right"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_write_right">
+  <rdfs:subPropertyOf rdf:resource="#has_right"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_execute_right">
+  <rdfs:subPropertyOf rdf:resource="#has_right"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#submitted_by">
+  <rdfs:subPropertyOf rdf:resource="#authored_by"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">every document is submitted by a corresponding author, of which there is exactly one per information concretization</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#status_complete">
+  <rdfs:domain rdf:resource="#information_concretization"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">status of a information carrier: either complete or incomplete</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#timestamp">
+  <rdfs:domain rdf:resource="#information_concretization"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">date of the last change to a information carrier</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#actor">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#has"/>
+      <owl:someValuesFrom rdf:resource="#viewpoint"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">anyone and anything that provides or requires information</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#doc_format">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">concrete syntax some information concretization is stored in; e.g., plain text or pdf; indicates the information concretization's structure and how it has to be interpreted</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#event">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#information">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#describes"/>
+      <owl:someValuesFrom rdf:resource="#system"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">the communication or reception of knowledge [Merriam Webster]</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#information_carrier">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#captures"/>
+      <owl:someValuesFrom rdf:resource="#information_concretization"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">physical artifact that captures some information concretization</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#information_concretization">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#concretizes"/>
+      <owl:someValuesFrom rdf:resource="#information"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#expressed_in"/>
+      <owl:onClass rdf:resource="#language"/>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#authored_by"/>
+      <owl:someValuesFrom rdf:resource="#actor"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#submitted_by"/>
+      <owl:onClass rdf:resource="#actor"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#status_complete"/>
+      <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#timestamp"/>
+      <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">notion to express concretization of some information, i.e., some information being expressed in some language and possibly serialized in some format</rdfs:comment>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">an information concretization refers to the combination of information expressed in at least one specific language. combinations of languages may be necessary, e.g., UML and English</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#language">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">set of valid sentences that can be used to express information</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#organization">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#organizational_unit">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <rdf:Description>
+          <owl:inverseOf rdf:resource="#part"/>
+        </rdf:Description>
+      </owl:onProperty>
+      <owl:someValuesFrom rdf:resource="#organization"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#project">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#defines"/>
+      <owl:someValuesFrom rdf:resource="#requirement"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">an endeavor with start and finish dates undertaken to create a product or service in accordance with specified resources and requirements [INCOSE SE Handbook]</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#role">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#system">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#performs"/>
+      <owl:someValuesFrom rdf:resource="#function"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a combination of interacting elements organized to achieve one more stated purposes [INCOSE SE Handbook]</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#task">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#viewpoint">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#behavioral_information">
+  <rdfs:subClassOf rdf:resource="#information"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">defines the behavior of a system</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#requirement">
+  <rdfs:subClassOf rdf:resource="#information"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">condition or capability that must be possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed information carriers (IEEE glossary)</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#structural_information">
+  <rdfs:subClassOf rdf:resource="#information"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">defines the structure of a system</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#function">
+  <rdfs:subClassOf rdf:resource="#behavioral_information"/>
+</owl:Class>
+
+<owl:Class rdf:about="#company">
+  <rdfs:subClassOf rdf:resource="#organization"/>
+</owl:Class>
+
+<owl:Class rdf:about="#discipline">
+  <rdfs:subClassOf rdf:resource="#viewpoint"/>
+</owl:Class>
+
+<owl:Class rdf:about="#functional_requirement">
+  <rdfs:subClassOf rdf:resource="#requirement"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#specifies"/>
+      <owl:someValuesFrom rdf:resource="#function"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requirement that specifies a function that a system or system component must be able to perform (IEEE glossary)</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#non_functional_requirement">
+  <rdfs:subClassOf rdf:resource="#requirement"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#restricts"/>
+      <owl:someValuesFrom rdf:resource="#system"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">opposed to functional requirements, a non-functional requirement specifies (IEEE glossary)</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#person">
+  <rdfs:subClassOf rdf:resource="#actor"/>
+</owl:Class>
+
+<owl:Class rdf:about="#tool">
+  <rdfs:subClassOf rdf:resource="#actor"/>
+</owl:Class>
+
+<owl:Class rdf:about="#university">
+  <rdfs:subClassOf rdf:resource="#organization"/>
+</owl:Class>
+
+
+</rdf:RDF>

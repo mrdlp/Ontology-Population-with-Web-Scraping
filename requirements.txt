@@ -1,0 +1,9 @@
+pandas~=1.2.3
+owlready2~=0.31
+quantulum3~=0.7.7
+fuzzywuzzy~=0.18.0
+extruct~=0.12.0
+scrapy~=2.4.1
+itemadapter~=0.2.0
+twisted~=21.2.0
+setuptools~=54.2.0
